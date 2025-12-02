@@ -16,7 +16,6 @@ agaru-up-dotfiles/
 ├── README.md                 # このファイル
 └── dotfiles/
     ├── cloudflared/          # Cloudflare Tunnel設定
-    ├── git/                  # Git設定
     ├── python/               # Python環境設定
     └── ssh/                  # SSH設定
 ```
@@ -43,13 +42,6 @@ cd agaru-up-dotfiles
 ```
 
 ## 🔧 各モジュール
-
-### Git設定 (`dotfiles/git/`)
-
-Git コマンドの設定を管理します。
-```bash
-./dotfiles/git/setup.git.sh
-```
 
 ### SSH設定 (`dotfiles/ssh/`)
 
@@ -141,9 +133,26 @@ Semantic Versioning (SemVer) を採用：
 
 ### リリースプロセス
 
-1. devからreleaseブランチを作成
-2. バージョン更新とリリース準備
-3. mainにマージしてタグ付け
+1. mainブランチから最新の変更を取得：
+```bash
+git checkout main
+git pull origin main
+```
+
+2. バージョンを更新（例：1.0.0 → 1.1.0）
+
+3. 変更をコミット：
+```bash
+git commit -m "chore: リリース v1.1.0"
+```
+
+4. タグを作成してプッシュ：
+```bash
+git tag -a v1.1.0 -m "Release v1.1.0"
+git push origin main --tags
+```
+
+5. GitHubの Releases ページでリリースノートを作成
 
 ## 🤝 コントリビューション
 
