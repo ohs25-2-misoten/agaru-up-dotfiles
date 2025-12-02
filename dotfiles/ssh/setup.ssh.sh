@@ -38,7 +38,7 @@ setup_ssh_authorized_keys() {
 
     # Create symlink
     ln -s "$AUTHORIZED_KEYS_SRC" "$AUTHORIZED_KEYS_DST"
-    chmod 600 "$AUTHORIZED_KEYS_DST"
+    chmod 600 "$AUTHORIZED_KEYS_SRC"
     log_info "SSH authorized_keys symlink created: $AUTHORIZED_KEYS_DST -> $AUTHORIZED_KEYS_SRC"
 }
 
