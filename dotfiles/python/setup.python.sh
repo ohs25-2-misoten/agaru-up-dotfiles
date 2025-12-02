@@ -14,10 +14,12 @@ install_uv() {
     log_info "Installing uv..."
 
     # Install uv
-    curl -LsSf https://astral.sh/uv/install.sh | sh
+    if ! curl -LsSf https://astral.sh/uv/install.sh | sh; then
+        log_error "Failed to install uv. Please check your internet connection and try again."
+        exit 1
+    fi
 
     log_info "uv installation completed"
-    uv --version
 
     # Add uv to PATH if not already present
     if ! grep -q "\.cargo/bin" ~/.bashrc; then
