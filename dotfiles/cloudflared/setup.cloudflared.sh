@@ -45,4 +45,4 @@ install_cloudflared() {
 }
 
 # Execute setup function
-install_cloudflared "$@"
+install_cloudflared

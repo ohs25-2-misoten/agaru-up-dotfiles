@@ -96,4 +96,4 @@ setup_sshd_config() {
 }
 
 # Execute setup functions
-setup_ssh_authorized_keys "$@" && setup_sshd_config "$@"
+setup_ssh_authorized_keys && setup_sshd_config

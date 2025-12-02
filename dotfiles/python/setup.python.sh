@@ -8,6 +8,7 @@ set -e
 source "$(dirname "$0")/../../lib.sh" 2>/dev/null || {
     # Fallback logging functions
     log_info() { echo "[INFO] $1"; }
+    log_error() { echo "[ERROR] $1"; }
 }
 
 install_uv() {
@@ -31,4 +32,4 @@ install_uv() {
 }
 
 # Execute if sourced or run directly
-install_uv "$@"
+install_uv

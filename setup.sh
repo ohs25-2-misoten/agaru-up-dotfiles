@@ -6,7 +6,13 @@
 set -e
 
 # Source common library
-source "$(dirname "$0")/lib.sh"
+source "$(dirname "$0")/lib.sh" 2>/dev/null || {
+    # lib.shの読み込みに失敗した場合、フォールバックのログ関数を定義し、エラーメッセージを表示します。
+    log_info()  { echo "[INFO] $1"; }
+    log_warn()  { echo "[WARN] $1"; }
+    log_error() { echo "[ERROR] $1"; }
+    log_error "Failed to source lib.sh. Fallback logging functions are being used."
+}
 
 # Configuration
 DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
