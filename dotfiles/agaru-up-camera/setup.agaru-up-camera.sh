@@ -18,8 +18,11 @@ if [ -d "$REPO_PATH" ]; then
     log_warn "Repository already exists at $REPO_PATH. Pulling latest changes..."
     cd "$REPO_PATH"
     git pull origin main
+    uv sync
 else
     git clone "$REPO_URL" "$REPO_PATH"
+    cd "$REPO_PATH"
+    uv sync
     log_info "Repository cloned successfully to $REPO_PATH"
 fi
 
