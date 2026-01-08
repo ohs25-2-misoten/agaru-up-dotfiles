@@ -19,6 +19,8 @@ DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 SSH_SETUP="$DOTFILES_DIR/dotfiles/ssh/setup.ssh.sh"
 PYTHON_SETUP="$DOTFILES_DIR/dotfiles/python/setup.python.sh"
 CLOUDFLARED_SETUP="$DOTFILES_DIR/dotfiles/cloudflared/setup.cloudflared.sh"
+SERVICE_SETUP="$DOTFILES_DIR/dotfiles/service/setup.service.sh"
+CAMERA_SETUP="$DOTFILES_DIR/dotfiles/agaru-up-camera/setup.agaru-up-camera.sh"
 
 # Update system
 update_system() {
@@ -37,7 +39,8 @@ install_essential_packages() {
         vim \
         nano \
         build-essential \
-        python3
+        python3 \
+        screen
 }
 
 # Execute installation scripts
@@ -76,6 +79,30 @@ setup_cloudflared() {
     fi
 }
 
+# Setup agaru-up-camera
+setup_camera() {
+    log_info "Setting up agaru-up-camera..."
+
+    if [ -f "$CAMERA_SETUP" ]; then
+        log_info "Running camera setup..."
+        bash "$CAMERA_SETUP" || log_warn "Camera setup encountered an issue"
+    else
+        log_warn "Camera setup script not found: $CAMERA_SETUP"
+    fi
+}
+
+# Setup services
+setup_services() {
+    log_info "Setting up services..."
+
+    if [ -f "$SERVICE_SETUP" ]; then
+        log_info "Running service setup..."
+        bash "$SERVICE_SETUP" || log_warn "Service setup encountered an issue"
+    else
+        log_warn "Service setup script not found: $SERVICE_SETUP"
+    fi
+}
+
 # Main
 main() {
     log_info "Starting Raspberry Pi setup..."
@@ -95,6 +122,8 @@ main() {
     execute_install_scripts
     setup_ssh_public_key
     setup_cloudflared
+    setup_camera
+    setup_services
 
     log_info "Setup completed successfully!"
     log_info "Please restart your shell or run: source ~/.bashrc"
