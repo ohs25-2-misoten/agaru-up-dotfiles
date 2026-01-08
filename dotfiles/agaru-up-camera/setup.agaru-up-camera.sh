@@ -22,6 +22,7 @@ if [ -d "$REPO_PATH" ]; then
 else
     git clone "$REPO_URL" "$REPO_PATH"
     cd "$REPO_PATH"
+    cp .env.sample .env
     uv sync
     log_info "Repository cloned successfully to $REPO_PATH"
 fi
