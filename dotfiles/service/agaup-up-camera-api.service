@@ -1,0 +1,13 @@
+[Unit]
+Description=agaru-up-camera api
+Requires=agaru-up-camera-rec.service
+
+[Service]
+Type=simple
+ExecStart=uv run fastapi run main.py
+WorkingDirectory=/home/hal446/agaru-up-camera
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target

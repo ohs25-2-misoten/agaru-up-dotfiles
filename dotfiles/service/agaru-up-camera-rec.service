@@ -1,0 +1,12 @@
+[Unit]
+Description=agaru-up-camera recording
+
+[Service]
+Type=simple
+ExecStart=/home/hal446/agaru-up-camera/rec.sh
+WorkingDirectory=/home/hal446/agaru-up-camera
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
