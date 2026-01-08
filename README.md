@@ -211,4 +211,4 @@ GNU Affero General Public License v3.0 (AGPL-3.0) ライセンスの下で提供
 
 ---
 
-**最終更新**: 2025年12月2日
+**最終更新**: 2026年1月8日
