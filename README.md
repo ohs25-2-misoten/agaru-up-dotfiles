@@ -10,14 +10,16 @@ Bashスクリプトを使用して、システム設定やアプリケーショ�
 
 ```
 agaru-up-dotfiles/
-├── lib.sh                    # 共有ユーティリティ関数
-├── setup.sh                  # メインセットアップスクリプト
-├── LICENSE                   # ライセンス
-├── README.md                 # このファイル
+├── lib.sh                           # 共有ユーティリティ関数
+├── setup.sh                         # メインセットアップスクリプト
+├── LICENSE                          # ライセンス
+├── README.md                        # このファイル
 └── dotfiles/
-    ├── cloudflared/          # Cloudflare Tunnel設定
-    ├── python/               # Python環境設定
-    └── ssh/                  # SSH設定
+    ├── agaru-up-camera/             # agaru-up-camera設定
+    ├── cloudflared/                 # Cloudflare Tunnel設定
+    ├── python/                      # Python環境設定
+    ├── service/                     # Systemd サービス設定
+    └── ssh/                         # SSH設定
 ```
 
 ## 🚀 セットアップ
@@ -65,6 +67,23 @@ Python環境の設定を管理します。
 Cloudflare Tunnelの設定を管理します。
 ```bash
 ./dotfiles/cloudflared/setup.cloudflared.sh
+```
+
+### agaru-up-camera (`dotfiles/agaru-up-camera/`)
+
+agaru-up-cameraシステムの設定を管理します。
+```bash
+./dotfiles/agaru-up-camera/setup.agaru-up-camera.sh
+```
+
+### Systemd Services (`dotfiles/service/`)
+
+Systemdサービスファイルの設定を管理します。
+- `agaru-up-camera-rec.service`: カメラ記録サービス
+- `agaup-up-camera-api.service`: カメラAPI サービス
+
+```bash
+./dotfiles/service/setup.service.sh
 ```
 
 ## 📝 カスタマイズ
