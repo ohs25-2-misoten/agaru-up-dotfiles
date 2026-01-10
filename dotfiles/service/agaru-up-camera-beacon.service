@@ -1,0 +1,12 @@
+[Unit]
+Description=agaru-up-camera ble beacon
+
+[Service]
+Type=simple
+ExecStart=/home/hal446/agaru-up-beacon/.venv/bin/python /home/hal446/agaru-up-beacon/main.py
+WorkingDirectory=/home/hal446/agaru-up-beacon
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
