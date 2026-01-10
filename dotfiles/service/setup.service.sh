@@ -15,7 +15,7 @@ SYSTEMD_DIR="/etc/systemd/system"
 # Service files to set up
 SERVICE_FILES=(
     "agaru-up-camera-rec.service"
-    "agaup-up-camera-api.service"
+    "agaru-up-camera-api.service"
 )
 
 log_info "Setting up systemd services..."
